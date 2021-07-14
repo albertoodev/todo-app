@@ -22,11 +22,11 @@ class TaskController extends Controller
     public function fetchDoneTasks(){
         $data = Task::where('stat','=',1)->get();
         if(!$data){
-            return   response()->json(['data' => null , 'isEmpty' => false]);
-            }
-            else{
-                return   response()->json(['data' => $data , 'isEmpty' => true]);
-            }
+            return   response()->json(['data' => null , 'isEmpty' => true]);
+        }
+        else{
+            return   response()->json(['data' => $data , 'isEmpty' => false]);
+        }
     }
     public function addTask(Request $request){
         $task = new Task;
@@ -36,19 +36,34 @@ class TaskController extends Controller
     }
     public function delete($id){
         $task =Task::find($id);
-        $result =$task->delete();
-        return   response()->json(['isDeleted' => $result]);
+        if(!$task){
+            return   response()->json(['isDeleted' => false]);
+        }
+        else{
+            $result =$task->delete();
+            return   response()->json(['isDeleted' => $result]);
+        }
     }
     public function update(Request $request,$id){
         $task =Task::find($id);
-        $task->name=$request->name;
-        $result=$task->save();
-        return   response()->json(['isUpdated' => $result]);
+        if(!$task){
+            return   response()->json(['isUpdated' => false]);
+        }
+        else{
+            $task->name=$request->name;
+            $result=$task->save();
+            return   response()->json(['isUpdated' => $result]);
+        }
     }
     public function setStat($id){
         $task =Task::find($id);
-        $task->stat=true;
-        $result=$task->save();
-        return   response()->json(['isUpdated' => $result]);
+        if(!$task){
+            return   response()->json(['isUpdated' => false]);
+        }
+        else{
+            $task->stat=true;
+            $result=$task->save();
+            return   response()->json(['isUpdated' => $result]);
+        }
     }
 }
