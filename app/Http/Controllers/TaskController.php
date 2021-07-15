@@ -61,7 +61,7 @@ class TaskController extends Controller
             return   response()->json(['isUpdated' => false]);
         }
         else{
-            $task->stat=true;
+            $task->stat=!$task->stat;
             $result=$task->save();
             return   response()->json(['isUpdated' => $result]);
         }
