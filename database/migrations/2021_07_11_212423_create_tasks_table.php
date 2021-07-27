@@ -4,7 +4,6 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-use function GuzzleHttp\default_ca_bundle;
 
 class CreateTasksTable extends Migration
 {
@@ -18,6 +17,9 @@ class CreateTasksTable extends Migration
         Schema::create('tasks', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('desc');
+            $table->string('date');
+            $table->string('time');
             $table->boolean('stat')->default(false);
             $table->timestamps();
         });

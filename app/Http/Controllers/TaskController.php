@@ -31,6 +31,9 @@ class TaskController extends Controller
     public function addTask(Request $request){
         $task = new Task;
         $task->name=$request->name;
+        $task->desc=$request->desc;
+        $task->date=$request->date;
+        $task->time=$request->time;
         $result=$task->save();
         return   response()->json(['isAdded' => $result]);
     }
@@ -51,6 +54,9 @@ class TaskController extends Controller
         }
         else{
             $task->name=$request->name;
+            $task->desc=$request->desc;
+            $task->date=$request->date;
+            $task->time=$request->time;
             $result=$task->save();
             return   response()->json(['isUpdated' => $result]);
         }
