@@ -5,13 +5,11 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Task;
 
-use function GuzzleHttp\Promise\all;
-use function GuzzleHttp\Promise\task;
 
 class TaskController extends Controller
 {
     public function fetchTasks(){
-        $data = Task::where('stat','=',0)->get();
+        $data = Task::where('state','=',0)->get();
         if(!$data){
         return   response()->json(['data' => null , 'isEmpty' => true]);
         }
@@ -20,7 +18,7 @@ class TaskController extends Controller
         }
     }
     public function fetchDoneTasks(){
-        $data = Task::where('stat','=',1)->get();
+        $data = Task::where('state','=',1)->get();
         if(!$data){
             return   response()->json(['data' => null , 'isEmpty' => true]);
         }
@@ -35,7 +33,7 @@ class TaskController extends Controller
         $task->date=$request->date;
         $task->time=$request->time;
         $result=$task->save();
-        return   response()->json(['isAdded' => $result]);
+        return   response()->json(['isAdded' => $result,'id'=>$task->id]);
     }
     public function delete($id){
         $task =Task::find($id);
@@ -67,7 +65,7 @@ class TaskController extends Controller
             return   response()->json(['isUpdated' => false]);
         }
         else{
-            $task->stat=!$task->stat;
+            $task->state=!$task->state;
             $result=$task->save();
             return   response()->json(['isUpdated' => $result]);
         }
