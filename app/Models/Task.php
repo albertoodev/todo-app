@@ -16,7 +16,7 @@ class Task extends Model
         'desc',
         'date',
         'time',
-        'stat',
+        'state',
     ];
 
 }
