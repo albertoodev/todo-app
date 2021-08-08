@@ -8,6 +8,11 @@ use App\Models\User;
 use Illuminate\Support\Facades\Validator;
 class AuthController extends Controller
 {
+    public function fetchUsers(){
+        $data = User::all();
+            return   response()->json(['data' => $data , 'isEmpty' => false]);
+       
+    }
 
     public function __construct()
     {
