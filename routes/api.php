@@ -27,6 +27,7 @@ Route::group([
     Route::post('register', [AuthController::class, 'register']);
     Route::post('logout', [AuthController::class, 'logout']);
 });
+Route::get('/getUsers',[AuthController::class,"fetchUsers"]);
 Route::get('/getAll',[TaskController::class,"fetchTasks"]);
 Route::get('/getDoneTasks',[TaskController::class,"fetchDoneTasks"]);
 Route::post('/add',[TaskController::class,"addTask"]);
