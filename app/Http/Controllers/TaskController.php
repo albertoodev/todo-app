@@ -11,19 +11,19 @@ class TaskController extends Controller
     public function fetchTasks(){
         $data = Task::where('state','=',0)->get();
         if(!$data){
-        return   response()->json(['data' => null , 'isEmpty' => true]);
+        return   response()->json(null);
         }
         else{
-            return   response()->json(['data' => $data , 'isEmpty' => false]);
+            return   response()->json($data);
         }
     }
     public function fetchDoneTasks(){
         $data = Task::where('state','=',1)->get();
         if(!$data){
-            return   response()->json(['data' => null , 'isEmpty' => true]);
+            return   response()->json(null);
         }
         else{
-            return   response()->json(['data' => $data , 'isEmpty' => false]);
+            return   response()->json($data);
         }
     }
     public function addTask(Request $request){
@@ -33,22 +33,22 @@ class TaskController extends Controller
         $task->date=$request->date;
         $task->time=$request->time;
         $result=$task->save();
-        return   response()->json(['isAdded' => $result,'id'=>$task->id]);
+        return   response()->json(['id'=>$task->id]);
     }
     public function delete($id){
         $task =Task::find($id);
         if(!$task){
-            return   response()->json(['isDeleted' => false]);
+            return   response()->json(false);
         }
         else{
             $result =$task->delete();
-            return   response()->json(['isDeleted' => $result]);
+            return   response()->json($result);
         }
     }
     public function update(Request $request,$id){
         $task =Task::find($id);
         if(!$task){
-            return   response()->json(['isUpdated' => false]);
+            return   response()->json(false);
         }
         else{
             $task->name=$request->name;
@@ -56,18 +56,18 @@ class TaskController extends Controller
             $task->date=$request->date;
             $task->time=$request->time;
             $result=$task->save();
-            return   response()->json(['isUpdated' => $result]);
+            return   response()->json($result);
         }
     }
     public function setStat($id){
         $task =Task::find($id);
         if(!$task){
-            return   response()->json(['isUpdated' => false]);
+            return   response()->json(false);
         }
         else{
             $task->state=!$task->state;
             $result=$task->save();
-            return   response()->json(['isUpdated' => $result]);
+            return   response()->json($result);
         }
     }
 }
