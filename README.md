@@ -1,3 +1,8 @@
+# Todo Api using laravel
+---
+##### This is a Todo API built using the Laravel PHP framework. I made this application after learning Laravel basics to create and manage todo lists using RESTful API endpoints.
+---
+
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 
 <p align="center">
@@ -7,60 +12,57 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-## About Laravel
+---
+## Features
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+- User authentication and authorization
+- Todo management (add, edit, delete,update)
+- Change the Todo state
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Requirements
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+- PHP >= 7.4
+- MySQL or any other compatible database server
+- Laravel >= 8.x
 
-## Learning Laravel
+## Installation
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+1- Clone this repository using Git or download the ZIP file.
+2- Configure the database settings in the '.env' file.
+3- Install the required dependencies using :
+```sh
+composer install
+```
+4- Run the migrations using :
+```sh
+php artisan migrate
+```
+5- Start the server using :
+```sh
+php artisan serve
+```
+## Usage
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### Authentication
+Users will be required to sign up or log in to access the API endpoints. Once authenticated, users will be able to access the various features of the application.
+### Tasks Management
+Users can create new todos by providing a title, description, and due date. Existing todos can also be edited or deleted as needed.
+### User Management
+Users can create new accounts by providing their personal details such as name, email, and password. Existing users can also be edited or deleted as needed.
+### API Endpoints
+The following API endpoints are available:
+#### Auth & User managment
+- POST /api/login - log in the user
+- POST /api/register - create a new user
+- POST /api/logout - logout the user
+- Get /api/getUsers -retrieve a list of users
+### Tasks
 
-## Laravel Sponsors
-
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
-
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-
+- GET /api/getAll - get pending tasks
+- GET /api/getDoneTasks - get done tasks
+- POST /api/add - create a new task
+- DELETE /api/todos/{id} - delete a specific task
+- POST /api//update/{id} - update a specific task
+- POST /setStat/{id} - change the state of a specific task from pending to done or from done to pending
 ## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
- first api project using laravel 
-# first api project using laravel
-# todo App api
-# todo app api
+Contributions are welcome! Please submit any bug reports, feature requests, or pull requests through the Github repository.
